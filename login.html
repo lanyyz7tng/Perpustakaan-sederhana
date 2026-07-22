@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Lab Book</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #4A69FF;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f4f4f4 0%, #e0e4ff 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(74, 105, 255, 0.15);
+            background: white;
+            animation: slideUp 0.6s ease-out;
+
+
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .brand-logo {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-pills .nav-link {
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            margin: 0 5px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(74, 105, 255, 0.25);
+            border-color: var(--primary-color);
+        }
+
+        .btn-login {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+            width: 100%;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background-color: #3551d1;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 105, 255, 0.3);
+            color: white;
+        }
+
+        .role-badge {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            text-align: center;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <div class="brand-logo">
+        <i class="bi bi-book-half"></i> Lab Book
+    </div>
+    
+    <span class="role-badge" id="role-text">Admin Perpustakaan Umum</span>
+
+    <form id="login-form">
+        <div class="mb-3">
+            <label class="form-label">Username / Email</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" id="username" placeholder="Masukkan username" required>
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <label class="form-label">Password</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+                <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-login">
+            Masuk Sekarang
+        </button>
+    </form>
+
+    <div class="text-center mt-4">
+        <small class="text-muted">Lupa password? Hubungi IT Support</small>
+        <br>
+        <small class="text-muted">nt: username admin password 123</small>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    let currentRole = 'Admin';
+
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+
+        // Logika Sederhana:
+        if(currentRole === 'Admin') {
+            if(user === 'admin' && pass === '123') {
+                alert('Login Admin Berhasil!');
+                window.location.href = 'index.html';
+            } else {
+                alert('Username/Password Admin salah!');
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
